@@ -5,12 +5,11 @@
   Spring-Security \
   Jpa/Hibernate \
   Spring-Data \
+  Lombok \
   WebServices : \
   Spring-RestControler \
-  Spring-Data-Rest \
-  Lombok
-
-
+  Spring-Data-Rest
+  
 
 ![image](https://user-images.githubusercontent.com/39586770/206782630-fc888655-e724-4d19-9b2b-a90bf0ac6d8b.png)  
 
