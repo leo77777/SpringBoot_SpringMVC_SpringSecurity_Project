@@ -25,4 +25,3 @@
 ![image](https://user-images.githubusercontent.com/39586770/206782269-c42bd605-39d3-4ede-8a1f-745415d1a503.png)
 
 
-![image](https://user-images.githubusercontent.com/39586770/206783476-2e95357a-ddbe-4d67-b3cd-9f899123bd30.png)
