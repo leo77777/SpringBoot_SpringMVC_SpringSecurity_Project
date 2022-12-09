@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Liste Des Patients</title>
+<link  rel="stylesheet" type="text/css" 
+		href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css">
+
+
+</head>
+<body>
+  <div  class="container mt-4">	
+	<div class="card">
+		<div class="card-header">Liste des patients</div>
+		<div class="card-body">
+			<form method="get" th:action="@{patients}">
+				<div class="form-group">
+					<label>Name</label>
+					<input type="text" name="keyword" th:value="${keyword}"/>
+					<button class="btn btn-success">Chercher</button>
+				</div>
+			</form>
+		
+		
+			<table class="table table-stripped">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Date naissance</th>
+					<th>Malade</th>
+					<th>Supprimer</th>
+					<!-- <th>Test</th> -->
+				</tr>
+				<tr th:each="p:${patients}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.name}"></td>
+					<td th:text="${p.dateNaissance}"></td>
+					<td th:text="${p.malade}"></td>
+					<td>
+						  <a onclick="return confirm('Etes vous sur de vouloir supprimer ?')" 
+						    th:href="@{deletePatient(id=${p.id}, keyword=${keyword},
+						   			 page=${currentPage}, size=${size})}"
+						     class="btn btn-danger btn-sm" >Delete</a> 
+					</td>
+<!-- 					<td>
+						Ci dessous une autre version avec une url différente
+						  <a onclick="return confirm('Etes vous sur de vouloir tester ?')" 
+						    th:href="@{Patient/delete(id=${p.id}, keyword=${keyword},
+						   			 page=${currentPage}, size=${size})}"
+						     class="btn btn-success btn-sm" >Test</a> 
+					</td> -->
+				</tr>
+			</table>
+			
+			<ul 	class="nav nav-pill">
+				<li th:each="page,status:${pages}" class="mr-2" >
+					<a th:text="${status.index}" 
+					th:class="${status.index == currentPage ? 'btn btn-primary':'btn'}" 
+					th:href="@{patients(page=${status.index}, keyword=${keyword}, size=${size})}"></a>
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+  </div>	
+	
+</body>
+</html>

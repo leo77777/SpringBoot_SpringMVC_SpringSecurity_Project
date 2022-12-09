@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns=layout=
+	"http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+
+<head>
+<meta charset="utf-8">
+<title>Formulaire patients</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container mt-4">	
+			<div class="col-md-6">	
+				<div class="card">
+					
+						<div class="card-header" th:if="${#request.getParameter('mode')}=='new'" >
+							<h4 class="text-center">Ceci est un test !</h4>
+						</div>
+					
+					
+					<!-- <div class="card-header" th:if="${#request.getParameter('mode'}=='new' "> -->
+					<!-- <div class="card-header" th:if="${patient.id}==null "> -->
+					<div class="card-header" th:if="${mode}== 'new' "> 
+						 <h4 class="text-center">Formulaire saisie d'un nouveau patient</h4>
+					</div>
+					
+					<!-- <div class="card-header"  th:if="${#request.getParameter('mode'}=='edit' "> -->
+					<!-- <div class="card-header" th:if="${patient.id}!=null "> -->
+					<div class="card-header" th:if="${mode}== 'edit' ">
+						 <h4 class="text-center">Formulaire de mise à jour d'un patient</h4>
+					</div>
+					<div class="card-body">
+						<form  method="post" th:action="@{savePatient}" >
+							<div class="form-group">
+								<label class="control-label">ID: </label>
+								<label class="control-label" th:text="${patient.id}"></label>
+								<input class="form-control" name="id" type="hidden" th:value="${patient.id}"></input>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Name: </label>
+								<input class="form-control" name="name" type="text" th:value="${patient.name}"></input>
+								<span th:errors=${patient.name} class="text-danger badge"></span>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Date de naissance: </label>
+								<input class="form-control" name="dateNaissance" type="date" th:value="${patient.dateNaissance}"></input>
+								<span th:errors=${patient.dateNaissance} class="text-danger badge"></span>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Malade: </label>
+								<input name="malade" type="checkbox" th:checked="${patient.malade}"></input>
+								<span th:errors=${patient.malade} class="text-danger badge"></span>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Score: </label>
+								<input name="score" type="text" th:value="${patient.score}"></input>
+								<span th:errors=${patient.score} class="text-danger badge"></span>
+							</div>
+							<button class="btn btn-success" type="submit">Ok</button>
+						</form>			
+					</div>
+				</div>
+				<!-- Fin class card -->	
+			</div>
+			<!-- fin col-md-6 -->
+		</div>		
+		<!-- fin container -->
+	</div>
+	<!-- fin fragment:content -->
+</body>
+
+</html>

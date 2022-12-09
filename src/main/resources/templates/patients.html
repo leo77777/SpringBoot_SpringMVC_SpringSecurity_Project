@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	 xmlns=layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template">
+
+<head>
+<title>Page patients</title>
+</head>
+<body>
+	<div layout:fragment="content">
+
+		<div class="container mt-4">
+			<div class="card">
+				<div class="card-header">Liste des patients</div>
+				<div class="card-body">
+					<form method="get" th:action="@{patients}">
+						<div class="form-group">
+							<label>Name</label> <input type="text" name="keyword"
+								th:value="${keyword}" />
+							<button class="btn btn-success">Chercher</button>
+						</div>
+					</form>
+
+					<table class="table table-stripped">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Date naissance</th>
+							<th>Malade</th>
+							<th>Score</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')"  >Supprimer</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')"  >Editer</th>
+							<!-- <th>Test</th> -->
+						</tr>
+						<tr th:each="p:${patients}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.name}"></td>
+							<td th:text="${p.dateNaissance}"></td>
+							<td th:text="${p.malade}"></td>
+							<td th:text="${p.score}"></td>
+							<td  sec:authorize="hasRole('ROLE_ADMIN')" ><a
+								onclick="return confirm('Etes vous sur de vouloir supprimer ?')"
+								th:href="@{deletePatient(id=${p.id}, keyword=${keyword},
+						   			 page=${currentPage}, size=${size})}"
+								class="btn btn-danger btn-sm">Delete</a>
+							</td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"  ><a
+								th:href="@{editPatient(id=${p.id}, keyword=${keyword},
+						   			 page=${currentPage}, size=${size})}"
+								class="btn btn-success btn-sm">Editer</a>
+							</td>
+							<!-- <td>
+								Ci dessous une autre version avec une url différente
+								  <a onclick="return confirm('Etes vous sur de vouloir tester ?')" 
+								    th:href="@{Patient/delete(id=${p.id}, keyword=${keyword},
+								   			 page=${currentPage}, size=${size})}"
+								     class="btn btn-success btn-sm" >Test</a> 
+							</td> -->
+						</tr>
+					</table>
+					<ul class="nav nav-pill">
+						<li th:each="page,status:${pages}" class="mr-2"><a
+							th:text="${status.index}"
+							th:class="${status.index == currentPage ? 'btn btn-primary':'btn'}"
+							th:href="@{patients(page=${status.index}, keyword=${keyword}, size=${size})}"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+
+</html>
