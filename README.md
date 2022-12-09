@@ -1,7 +1,7 @@
 # SpringBoot_SpringMVC_SpringSecurity_Project
  Small project using : \
-  SpringBoot
-  Spring-MVC
+  SpringBoot \
+  Spring-MVC \
   Spring-Security
   Jpa/Hibernate
   Spring-Data
