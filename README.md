@@ -2,9 +2,9 @@
  Small project using : \
   SpringBoot \
   Spring-MVC \
-  Spring-Security
-  Jpa/Hibernate
-  Spring-Data
-  WebServices :
-  Spring-RestControler
-  Spring-Data-Rest
+  Spring-Security \
+  Jpa/Hibernate \
+  Spring-Data \
+  WebServices : \
+  Spring-RestControler \
+  Spring-Data-Rest \
