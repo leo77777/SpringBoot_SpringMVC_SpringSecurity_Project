@@ -1,7 +1,7 @@
 # SpringBoot_SpringMVC_SpringSecurity_Project
  Small project using : \
   SpringBoot \
-  Spring-MVC \ Thymeleaf
+  Spring-MVC \ Thymeleaf \
   Spring-Security \
   Jpa/Hibernate \
   Spring-Data \
