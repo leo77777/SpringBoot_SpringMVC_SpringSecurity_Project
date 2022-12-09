@@ -1,6 +1,6 @@
 # SpringBoot_SpringMVC_SpringSecurity_Project
  Small project using : \
-  \t SpringBoot \
+  SpringBoot \
   Spring-MVC \ Thymeleaf \
   Spring-Security \
   Jpa/Hibernate \
